@@ -13,6 +13,9 @@ app.use(cors());
 mongoose.connect(process.env.MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  ssl: true,
+  sslValidate: true,
+  sslCA: undefined,
 });
 
 const db = mongoose.connection;
