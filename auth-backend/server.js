@@ -10,7 +10,11 @@ dotenv.config();
 const app = express();
 app.use(cors());
 
-mongoose.connect(process.env.MONGO);
+mongoose.connect(process.env.MONGO, {
+  tls: true,
+  serverSelectionTimeoutMS: 3000,
+  autoSelectFamily: false,
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection error:'));
